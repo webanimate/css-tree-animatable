@@ -1,0 +1,13 @@
+{
+  "properties": {},
+  "syntaxes": {
+    "bottom": { "syntax": "<length> | auto" },
+    "left": { "syntax": "<length> | auto" },
+    "name-repeat": { "syntax": "repeat( [ <positive-integer> | auto-fill ], <line-names>+)" },
+    "right": { "syntax": "<length> | auto" },
+    "top": { "syntax": "<length> | auto" },
+    "url": { "syntax": "url( <string> <url-modifier>* ) | <url-token>" },
+    "url-modifier": { "syntax": "<ident> | <function-token> <any-value> )" },
+    "positive-integer": { "syntax": "<integer [0,∞]>" }
+  }
+}
