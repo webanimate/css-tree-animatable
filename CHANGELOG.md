@@ -1,3 +1,12 @@
+## [1.0.2](https://github.com/webanimate/css-tree-animatable/compare/v1.0.1...v1.0.2) (2020-05-24)
+
+
+### Performance Improvements
+
+* remove `source-map` dependency ([ea09a72](https://github.com/webanimate/css-tree-animatable/commit/ea09a72b26b845a46cd46e5d2a5df72ba22921ed))
+
+
+
 ## [1.0.1](https://github.com/webanimate/css-tree-animatable/compare/v1.0.0...v1.0.1) (2020-05-24)
 
 
