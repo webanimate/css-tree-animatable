@@ -28,7 +28,7 @@
     "up": "yarn upgrade-interactive && yarn outdated"
   },
   "dependencies": {
-    "mdn-data-animatable": "^1.0.0",
+    "mdn-data-animatable": "^1.0.1",
     "source-map": "^0.7.3"
   },
   "devDependencies": {

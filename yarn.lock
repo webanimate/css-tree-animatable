@@ -691,17 +691,10 @@ magic-string@^0.25.2:
   dependencies:
     sourcemap-codec "^1.4.4"
 
-mdn-data-animatable@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/mdn-data-animatable/-/mdn-data-animatable-1.0.0.tgz#3eeba7cd7b79a33c34e2e6206b6ade10781b8502"
-  integrity sha512-mPpoyW8pTd+kKH3rYA+I7ucBoCv12aE0Op3gnSYgxB+OZ7sr/6SA0J8/Y8pcr/jR/t7osIkQISgqAAqZqNcUXA==
-  dependencies:
-    mdn-data "^2.0.8"
-
-mdn-data@^2.0.8:
-  version "2.0.8"
-  resolved "https://registry.yarnpkg.com/mdn-data/-/mdn-data-2.0.8.tgz#b5b1b8b9dc76abb5261bf2b8c495a0b4565af5c6"
-  integrity sha512-2gcTclvIaw9K/D3+HeX2YrSmzJYvOL7CJCGTTrHlnzQ0N4KQkB/sgRwHArP7JzlL0feUwCZQ1C0yCO/us/dSdw==
+mdn-data-animatable@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/mdn-data-animatable/-/mdn-data-animatable-1.0.1.tgz#1e9efb91c86788e5f7fc58c3123c909f391e043c"
+  integrity sha512-dTWdbm8Qr4Slc6d0Iy9lnkP9vZZZggAIHt4xGPnHdCqOc/bN2pioqK/1KXhKxoKfUcLupgdIf9ma9YEJImYEjQ==
 
 merge-stream@^2.0.0:
   version "2.0.0"
