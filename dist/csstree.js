@@ -7350,7 +7350,7 @@
     	syntax: "none | <shadow-t>#"
     },
     	"text-underline-offset": {
-    	syntax: "auto | from-font | <length> | <percentage> "
+    	syntax: "auto | <length> | <percentage> "
     },
     	top: top,
     	transform: transform,
