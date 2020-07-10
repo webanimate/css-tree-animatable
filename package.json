@@ -17,8 +17,8 @@
     "lib"
   ],
   "scripts": {
-    "c": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0",
     "build": "rollup -c",
+    "c": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0",
     "gen": "node generate.js",
     "fix": "yarn gen && yarn fix:eslint && yarn fix:prettier && yarn build",
     "fix:eslint": "eslint --fix \"**/*.*\"",
@@ -29,17 +29,17 @@
     "up": "yarn upgrade-interactive && ncu -i && yarn"
   },
   "dependencies": {
-    "mdn-data-animatable": "^1.1.2"
+    "mdn-data-animatable": "^1.1.3"
   },
   "devDependencies": {
-    "@rollup/plugin-commonjs": "^12.0.0",
-    "@rollup/plugin-json": "^4.0.3",
-    "@rollup/plugin-node-resolve": "^8.0.0",
-    "eslint": "^7.1.0",
+    "@rollup/plugin-commonjs": "^13.0.0",
+    "@rollup/plugin-json": "^4.1.0",
+    "@rollup/plugin-node-resolve": "^8.1.0",
+    "eslint": "^7.4.0",
     "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-json": "^2.1.1",
     "prettier": "^2.0.5",
-    "rollup": "^2.13.1",
+    "rollup": "^2.21.0",
     "rollup-plugin-terser": "^6.1.0"
   },
   "eslintConfig": {
