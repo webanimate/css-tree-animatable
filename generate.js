@@ -20,8 +20,6 @@ const getMatches = (property) => {
 
 // Filter out all properties except animatable
 Object.keys(mdnProperties).forEach((key) => {
-  // Filter out all syntaxes except used in animatable properties
-  // getNonAnimatableProperties(key)
   getMatches(key)
 })
 
