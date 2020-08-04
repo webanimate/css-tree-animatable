@@ -1,7 +1,7 @@
 (function (global, factory) {
     typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
     typeof define === 'function' && define.amd ? define(factory) :
-    (global = global || self, global.csstree = factory());
+    (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.csstree = factory());
 }(this, (function () { 'use strict';
 
     //
@@ -7611,7 +7611,7 @@
     	syntax: "[ normal | small-caps ]"
     },
     	"font-weight-absolute": {
-    	syntax: "normal | bold | <number>"
+    	syntax: "normal | bold | <number [1,1000]>"
     },
     	"generic-family": {
     	syntax: "serif | sans-serif | cursive | fantasy | monospace"
