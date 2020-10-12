@@ -1,3 +1,9 @@
+## [1.0.6](https://github.com/webanimate/css-tree-animatable/compare/v1.0.5...v1.0.6) (2020-10-12)
+
+### Performance Improvements
+
+- update devDependencies ([eb24475](https://github.com/webanimate/css-tree-animatable/commit/eb24475ecda6714d926144308edd7a333b9a3653))
+
 ## [1.0.5](https://github.com/webanimate/css-tree-animatable/compare/v1.0.4...v1.0.5) (2020-08-04)
 
 ### Performance Improvements
