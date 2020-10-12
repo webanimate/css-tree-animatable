@@ -6771,14 +6771,9 @@
     	create: create_1
     };
 
-    var atRules = {
+    var mdnAtrules = {
     	
     };
-
-    var atRules$1 = /*#__PURE__*/Object.freeze({
-        __proto__: null,
-        'default': atRules
-    });
 
     var all = {
     	syntax: "initial | inherit | unset | revert"
@@ -6873,7 +6868,7 @@
     var zoom = {
     	syntax: "normal | reset | <number> | <percentage>"
     };
-    var properties$1 = {
+    var mdnProperties = {
     	all: all,
     	"backdrop-filter": {
     	syntax: "none | <filter-function-list>"
@@ -7417,42 +7412,6 @@
     }
     };
 
-    var properties$2 = /*#__PURE__*/Object.freeze({
-        __proto__: null,
-        all: all,
-        background: background,
-        border: border,
-        bottom: bottom,
-        clip: clip,
-        color: color,
-        columns: columns,
-        filter: filter,
-        flex: flex,
-        font: font,
-        gap: gap,
-        height: height,
-        inset: inset,
-        left: left,
-        margin: margin,
-        mask: mask,
-        offset: offset,
-        opacity: opacity,
-        order: order,
-        outline: outline,
-        padding: padding,
-        perspective: perspective,
-        right: right,
-        rotate: rotate,
-        scale: scale,
-        top: top,
-        transform: transform,
-        translate: translate,
-        visibility: visibility,
-        width: width,
-        zoom: zoom,
-        'default': properties$1
-    });
-
     var attachment = {
     	syntax: "scroll | fixed | local"
     };
@@ -7483,7 +7442,7 @@
     var size = {
     	syntax: "closest-side | farthest-side | closest-corner | farthest-corner | <length> | <length-percentage>{2}"
     };
-    var syntaxes = {
+    var mdnSyntaxes = {
     	"absolute-size": {
     	syntax: "xx-small | x-small | small | medium | large | x-large | xx-large | xxx-large"
     },
@@ -7841,24 +7800,9 @@
     }
     };
 
-    var syntaxes$1 = /*#__PURE__*/Object.freeze({
-        __proto__: null,
-        attachment: attachment,
-        box: box,
-        color: color$1,
-        gradient: gradient,
-        hue: hue,
-        image: image,
-        position: position,
-        shadow: shadow,
-        shape: shape$1,
-        size: size,
-        'default': syntaxes
-    });
-
-    var properties$3 = {
+    var properties$1 = {
     };
-    var syntaxes$2 = {
+    var syntaxes = {
     	bottom: {
     		syntax: "<length> | auto"
     	},
@@ -7885,28 +7829,9 @@
     	}
     };
     var patch = {
-    	properties: properties$3,
-    	syntaxes: syntaxes$2
+    	properties: properties$1,
+    	syntaxes: syntaxes
     };
-
-    var patch$1 = /*#__PURE__*/Object.freeze({
-        __proto__: null,
-        properties: properties$3,
-        syntaxes: syntaxes$2,
-        'default': patch
-    });
-
-    function getCjsExportFromNamespace (n) {
-    	return n && n['default'] || n;
-    }
-
-    var mdnAtrules = getCjsExportFromNamespace(atRules$1);
-
-    var mdnProperties = getCjsExportFromNamespace(properties$2);
-
-    var mdnSyntaxes = getCjsExportFromNamespace(syntaxes$1);
-
-    var patch$2 = getCjsExportFromNamespace(patch$1);
 
     function preprocessAtrules(dict) {
         var result = Object.create(null);
@@ -7959,9 +7884,9 @@
     }
 
     var data = {
-        types: buildDictionary(mdnSyntaxes, patch$2.syntaxes),
+        types: buildDictionary(mdnSyntaxes, patch.syntaxes),
         atrules: preprocessAtrules(mdnAtrules),
-        properties: buildDictionary(mdnProperties, patch$2.properties)
+        properties: buildDictionary(mdnProperties, patch.properties)
     };
 
     var cmpChar$3 = tokenizer.cmpChar;
