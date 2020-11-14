@@ -1,6 +1,6 @@
 {
   "name": "css-tree-animatable",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Fork of css-tree with all but animatable CSS properties removed",
   "main": "./lib/index",
   "author": "Web Animate <60752454+webanimate@users.noreply.github.com>",
