@@ -7147,7 +7147,7 @@
     	syntax: "<'max-width'>"
     },
     	"max-height": {
-    	syntax: "auto | <length> | <percentage> | min-content | max-content | fit-content(<length-percentage>)"
+    	syntax: "none | <length-percentage> | min-content | max-content | fit-content(<length-percentage>)"
     },
     	"max-inline-size": {
     	syntax: "<'max-width'>"
@@ -7156,7 +7156,7 @@
     	syntax: "none | <integer>"
     },
     	"max-width": {
-    	syntax: "auto | <length> | <percentage> | min-content | max-content | fit-content(<length-percentage>)"
+    	syntax: "none | <length-percentage> | min-content | max-content | fit-content(<length-percentage>)"
     },
     	"min-block-size": {
     	syntax: "<'min-width'>"
@@ -7181,7 +7181,7 @@
     	syntax: "<length-percentage>"
     },
     	"offset-path": {
-    	syntax: "none | ray( [ <angle> && <size>? && contain? ] ) | <path()> | <url> | [ <basic-shape> || <geometry-box> ]"
+    	syntax: "none | ray( [ <angle> && <size> && contain? ] ) | <path()> | <url> | [ <basic-shape> || <geometry-box> ]"
     },
     	"offset-position": {
     	syntax: "auto | <position>"
