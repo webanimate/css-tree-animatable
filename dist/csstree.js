@@ -6888,7 +6888,7 @@
     },
     	border: border,
     	"border-block-end": {
-    	syntax: "<'border-top-width'> || <'border-top-style'> || <'color'>"
+    	syntax: "<'border-top-width'> || <'border-top-style'> || <color>"
     },
     	"border-block-end-color": {
     	syntax: "<'border-top-color'>"
@@ -6897,7 +6897,7 @@
     	syntax: "<'border-top-width'>"
     },
     	"border-block-start": {
-    	syntax: "<'border-top-width'> || <'border-top-style'> || <'color'>"
+    	syntax: "<'border-top-width'> || <'border-top-style'> || <color>"
     },
     	"border-block-start-color": {
     	syntax: "<'border-top-color'>"
@@ -6939,7 +6939,7 @@
     	syntax: "[ <length-percentage> | <number> | auto ]{1,4}"
     },
     	"border-inline-end": {
-    	syntax: "<'border-top-width'> || <'border-top-style'> || <'color'>"
+    	syntax: "<'border-top-width'> || <'border-top-style'> || <color>"
     },
     	"border-inline-end-color": {
     	syntax: "<'border-top-color'>"
@@ -6948,7 +6948,7 @@
     	syntax: "<'border-top-width'>"
     },
     	"border-inline-start": {
-    	syntax: "<'border-top-width'> || <'border-top-style'> || <'color'>"
+    	syntax: "<'border-top-width'> || <'border-top-style'> || <color>"
     },
     	"border-inline-start-color": {
     	syntax: "<'border-top-color'>"
