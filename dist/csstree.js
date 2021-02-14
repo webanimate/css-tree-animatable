@@ -9060,7 +9060,6 @@
         parse: function() {
             var children = this.createList();
 
-            
             while (!this.scanner.eof) {
                 switch (this.scanner.tokenType) {
                     case WHITESPACE$6:
@@ -9944,7 +9943,6 @@
             var children = this.createList();
             var child;
 
-            
             while (!this.scanner.eof) {
                 switch (this.scanner.tokenType) {
                     case WHITESPACE$8:
