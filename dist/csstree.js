@@ -4,6 +4,8 @@
     (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.csstree = factory());
 }(this, (function () { 'use strict';
 
+    var create$4 = {};
+
     //
     //                              list
     //                            ┌──────┐
@@ -61,16 +63,16 @@
     }
 
     var cursors = null;
-    var List = function() {
+    var List$6 = function() {
         this.cursor = null;
         this.head = null;
         this.tail = null;
     };
 
-    List.createItem = createItem;
-    List.prototype.createItem = createItem;
+    List$6.createItem = createItem;
+    List$6.prototype.createItem = createItem;
 
-    List.prototype.updateCursors = function(prevOld, prevNew, nextOld, nextNew) {
+    List$6.prototype.updateCursors = function(prevOld, prevNew, nextOld, nextNew) {
         var cursor = this.cursor;
 
         while (cursor !== null) {
@@ -86,7 +88,7 @@
         }
     };
 
-    List.prototype.getSize = function() {
+    List$6.prototype.getSize = function() {
         var size = 0;
         var cursor = this.head;
 
@@ -98,7 +100,7 @@
         return size;
     };
 
-    List.prototype.fromArray = function(array) {
+    List$6.prototype.fromArray = function(array) {
         var cursor = null;
 
         this.head = null;
@@ -121,7 +123,7 @@
         return this;
     };
 
-    List.prototype.toArray = function() {
+    List$6.prototype.toArray = function() {
         var cursor = this.head;
         var result = [];
 
@@ -133,21 +135,21 @@
         return result;
     };
 
-    List.prototype.toJSON = List.prototype.toArray;
+    List$6.prototype.toJSON = List$6.prototype.toArray;
 
-    List.prototype.isEmpty = function() {
+    List$6.prototype.isEmpty = function() {
         return this.head === null;
     };
 
-    List.prototype.first = function() {
+    List$6.prototype.first = function() {
         return this.head && this.head.data;
     };
 
-    List.prototype.last = function() {
+    List$6.prototype.last = function() {
         return this.tail && this.tail.data;
     };
 
-    List.prototype.each = function(fn, context) {
+    List$6.prototype.each = function(fn, context) {
         var item;
 
         if (context === undefined) {
@@ -168,9 +170,9 @@
         releaseCursor(this);
     };
 
-    List.prototype.forEach = List.prototype.each;
+    List$6.prototype.forEach = List$6.prototype.each;
 
-    List.prototype.eachRight = function(fn, context) {
+    List$6.prototype.eachRight = function(fn, context) {
         var item;
 
         if (context === undefined) {
@@ -191,9 +193,9 @@
         releaseCursor(this);
     };
 
-    List.prototype.forEachRight = List.prototype.eachRight;
+    List$6.prototype.forEachRight = List$6.prototype.eachRight;
 
-    List.prototype.nextUntil = function(start, fn, context) {
+    List$6.prototype.nextUntil = function(start, fn, context) {
         if (start === null) {
             return;
         }
@@ -220,7 +222,7 @@
         releaseCursor(this);
     };
 
-    List.prototype.prevUntil = function(start, fn, context) {
+    List$6.prototype.prevUntil = function(start, fn, context) {
         if (start === null) {
             return;
         }
@@ -247,7 +249,7 @@
         releaseCursor(this);
     };
 
-    List.prototype.some = function(fn, context) {
+    List$6.prototype.some = function(fn, context) {
         var cursor = this.head;
 
         if (context === undefined) {
@@ -265,8 +267,8 @@
         return false;
     };
 
-    List.prototype.map = function(fn, context) {
-        var result = new List();
+    List$6.prototype.map = function(fn, context) {
+        var result = new List$6();
         var cursor = this.head;
 
         if (context === undefined) {
@@ -281,8 +283,8 @@
         return result;
     };
 
-    List.prototype.filter = function(fn, context) {
-        var result = new List();
+    List$6.prototype.filter = function(fn, context) {
+        var result = new List$6();
         var cursor = this.head;
 
         if (context === undefined) {
@@ -299,13 +301,13 @@
         return result;
     };
 
-    List.prototype.clear = function() {
+    List$6.prototype.clear = function() {
         this.head = null;
         this.tail = null;
     };
 
-    List.prototype.copy = function() {
-        var result = new List();
+    List$6.prototype.copy = function() {
+        var result = new List$6();
         var cursor = this.head;
 
         while (cursor !== null) {
@@ -316,7 +318,7 @@
         return result;
     };
 
-    List.prototype.prepend = function(item) {
+    List$6.prototype.prepend = function(item) {
         //      head
         //    ^
         // item
@@ -341,19 +343,19 @@
         return this;
     };
 
-    List.prototype.prependData = function(data) {
+    List$6.prototype.prependData = function(data) {
         return this.prepend(createItem(data));
     };
 
-    List.prototype.append = function(item) {
+    List$6.prototype.append = function(item) {
         return this.insert(item);
     };
 
-    List.prototype.appendData = function(data) {
+    List$6.prototype.appendData = function(data) {
         return this.insert(createItem(data));
     };
 
-    List.prototype.insert = function(item, before) {
+    List$6.prototype.insert = function(item, before) {
         if (before !== undefined && before !== null) {
             // prev   before
             //      ^
@@ -408,11 +410,11 @@
         return this;
     };
 
-    List.prototype.insertData = function(data, before) {
+    List$6.prototype.insertData = function(data, before) {
         return this.insert(createItem(data), before);
     };
 
-    List.prototype.remove = function(item) {
+    List$6.prototype.remove = function(item) {
         //      item
         //       ^
         // prev     next
@@ -444,35 +446,35 @@
         return item;
     };
 
-    List.prototype.push = function(data) {
+    List$6.prototype.push = function(data) {
         this.insert(createItem(data));
     };
 
-    List.prototype.pop = function() {
+    List$6.prototype.pop = function() {
         if (this.tail !== null) {
             return this.remove(this.tail);
         }
     };
 
-    List.prototype.unshift = function(data) {
+    List$6.prototype.unshift = function(data) {
         this.prepend(createItem(data));
     };
 
-    List.prototype.shift = function() {
+    List$6.prototype.shift = function() {
         if (this.head !== null) {
             return this.remove(this.head);
         }
     };
 
-    List.prototype.prependList = function(list) {
+    List$6.prototype.prependList = function(list) {
         return this.insertList(list, this.head);
     };
 
-    List.prototype.appendList = function(list) {
+    List$6.prototype.appendList = function(list) {
         return this.insertList(list);
     };
 
-    List.prototype.insertList = function(list, before) {
+    List$6.prototype.insertList = function(list, before) {
         // ignore empty lists
         if (list.head === null) {
             return this;
@@ -521,7 +523,7 @@
         return this;
     };
 
-    List.prototype.replace = function(oldItem, newItemOrList) {
+    List$6.prototype.replace = function(oldItem, newItemOrList) {
         if ('head' in newItemOrList) {
             this.insertList(newItemOrList, oldItem);
         } else {
@@ -531,9 +533,9 @@
         this.remove(oldItem);
     };
 
-    var List_1 = List;
+    var List_1 = List$6;
 
-    var createCustomError = function createCustomError(name, message) {
+    var createCustomError$3 = function createCustomError(name, message) {
         // use Object.create(), because some VMs prevent setting line/column otherwise
         // (iOS Safari 10 even throws an exception)
         var error = Object.create(SyntaxError.prototype);
@@ -551,6 +553,7 @@
         return error;
     };
 
+    var createCustomError$2 = createCustomError$3;
     var MAX_LINE_LENGTH = 100;
     var OFFSET_CORRECTION = 60;
     var TAB_REPLACEMENT = '    ';
@@ -601,8 +604,8 @@
         ].filter(Boolean).join('\n');
     }
 
-    var SyntaxError$1 = function(message, source, offset, line, column) {
-        var error = createCustomError('SyntaxError', message);
+    var SyntaxError$4 = function(message, source, offset, line, column) {
+        var error = createCustomError$2('SyntaxError', message);
 
         error.source = source;
         error.offset = offset;
@@ -631,7 +634,7 @@
         return error;
     };
 
-    var _SyntaxError$1 = SyntaxError$1;
+    var _SyntaxError$1 = SyntaxError$4;
 
     // CSS Syntax Module Level 3
     // https://www.w3.org/TR/css-syntax-3/
@@ -903,7 +906,7 @@
     function charCodeCategory$1(code) {
         return code < 0x80 ? CATEGORY[code] : charCodeCategory$1.NameStart;
     }
-    var charCodeDefinitions = {
+    var charCodeDefinitions$1 = {
         isDigit: isDigit$5,
         isHexDigit: isHexDigit$4,
         isUppercaseLetter: isUppercaseLetter$1,
@@ -923,12 +926,13 @@
         charCodeCategory: charCodeCategory$1
     };
 
-    var isDigit$4 = charCodeDefinitions.isDigit;
-    var isHexDigit$3 = charCodeDefinitions.isHexDigit;
-    var isUppercaseLetter = charCodeDefinitions.isUppercaseLetter;
-    var isName$1 = charCodeDefinitions.isName;
-    var isWhiteSpace$1 = charCodeDefinitions.isWhiteSpace;
-    var isValidEscape$1 = charCodeDefinitions.isValidEscape;
+    var charCodeDef = charCodeDefinitions$1;
+    var isDigit$4 = charCodeDef.isDigit;
+    var isHexDigit$3 = charCodeDef.isHexDigit;
+    var isUppercaseLetter = charCodeDef.isUppercaseLetter;
+    var isName$1 = charCodeDef.isName;
+    var isWhiteSpace$1 = charCodeDef.isWhiteSpace;
+    var isValidEscape$1 = charCodeDef.isValidEscape;
 
     function getCharCode(source, offset) {
         return offset < source.length ? source.charCodeAt(offset) : 0;
@@ -1152,7 +1156,7 @@
         return offset;
     }
 
-    var utils = {
+    var utils$2 = {
         consumeEscaped: consumeEscaped$1,
         consumeName: consumeName$1,
         consumeNumber: consumeNumber$5,
@@ -1166,11 +1170,12 @@
         findWhiteSpaceEnd: findWhiteSpaceEnd$1
     };
 
-    var TYPE$G = _const.TYPE;
-    var NAME$2 = _const.NAME;
+    var constants$2 = _const;
+    var TYPE$G = constants$2.TYPE;
+    var NAME$2 = constants$2.NAME;
 
-
-    var cmpStr$4 = utils.cmpStr;
+    var utils$1 = utils$2;
+    var cmpStr$4 = utils$1.cmpStr;
 
     var EOF = TYPE$G.EOF;
     var WHITESPACE$a = TYPE$G.WhiteSpace;
@@ -1179,14 +1184,14 @@
     var OFFSET_MASK$1 = 0x00FFFFFF;
     var TYPE_SHIFT$1 = 24;
 
-    var TokenStream = function() {
+    var TokenStream$4 = function() {
         this.offsetAndType = null;
         this.balance = null;
 
         this.reset();
     };
 
-    TokenStream.prototype = {
+    TokenStream$4.prototype = {
         reset: function() {
             this.eof = false;
             this.tokenIndex = -1;
@@ -1373,7 +1378,7 @@
         }
     };
 
-    var TokenStream_1 = TokenStream;
+    var TokenStream_1 = TokenStream$4;
 
     function noop$3(value) {
       return value
@@ -1413,7 +1418,7 @@
       var combinator = node.combinator === ' ' || compact ? node.combinator : ' ' + node.combinator + ' ';
       var result = node.terms
         .map(function (term) {
-          return generate(term, decorate, forceBraces, compact)
+          return generate$2(term, decorate, forceBraces, compact)
         })
         .join(combinator);
 
@@ -1424,7 +1429,7 @@
       return result
     }
 
-    function generate(node, decorate, forceBraces, compact) {
+    function generate$2(node, decorate, forceBraces, compact) {
       var result;
 
       switch (node.type) {
@@ -1434,7 +1439,7 @@
 
         case 'Multiplier':
           // return since node is a composition
-          return generate(node.term, decorate, forceBraces, compact) + decorate(generateMultiplier(node), node)
+          return generate$2(node.term, decorate, forceBraces, compact) + decorate(generateMultiplier(node), node)
 
         case 'Type':
           result = '<' + node.name + (node.opts ? decorate(generateTypeOpts(node.opts), node.opts) : '') + '>';
@@ -1487,8 +1492,11 @@
         }
       }
 
-      return generate(node, decorate, forceBraces, compact)
+      return generate$2(node, decorate, forceBraces, compact)
     };
+
+    var createCustomError$1 = createCustomError$3;
+    var generate$1 = generate_1;
 
     function fromMatchResult(matchResult) {
         var tokens = matchResult.tokens;
@@ -1537,7 +1545,7 @@
     }
 
     var SyntaxReferenceError$1 = function(type, referenceName) {
-        var error = createCustomError(
+        var error = createCustomError$1(
             'SyntaxReferenceError',
             type + (referenceName ? ' `' + referenceName + '`' : '')
         );
@@ -1548,7 +1556,7 @@
     };
 
     var MatchError$1 = function(message, syntax, node, matchResult) {
-        var error = createCustomError('SyntaxMatchError', message);
+        var error = createCustomError$1('SyntaxMatchError', message);
         var details = fromMatchResult(matchResult);
         var mismatchOffset = details.mismatchOffset || 0;
         var badNode = details.node || node;
@@ -1557,7 +1565,7 @@
         var css = details.css;
 
         error.rawMessage = message;
-        error.syntax = syntax ? generate_1(syntax) : '<generic>';
+        error.syntax = syntax ? generate$1(syntax) : '<generic>';
         error.css = css;
         error.mismatchOffset = mismatchOffset;
         error.loc = {
@@ -1679,7 +1687,7 @@
         });
     }
 
-    var names = {
+    var names$2 = {
         keyword: getKeywordDescriptor,
         property: getPropertyDescriptor,
         isCustomProperty: isCustomProperty$1,
@@ -1689,7 +1697,7 @@
     var MIN_SIZE = 16 * 1024;
     var SafeUint32Array = typeof Uint32Array !== 'undefined' ? Uint32Array : Array; // fallback on Array when TypedArray is not supported
 
-    var adoptBuffer = function adoptBuffer(buffer, size) {
+    var adoptBuffer$2 = function adoptBuffer(buffer, size) {
         if (buffer === null || buffer.length < size) {
             return new SafeUint32Array(Math.max(size + 1024, MIN_SIZE));
         }
@@ -1697,9 +1705,13 @@
         return buffer;
     };
 
-    var TYPE$F = _const.TYPE;
+    var TokenStream$3 = TokenStream_1;
+    var adoptBuffer$1 = adoptBuffer$2;
 
+    var constants$1 = _const;
+    var TYPE$F = constants$1.TYPE;
 
+    var charCodeDefinitions = charCodeDefinitions$1;
     var isNewline = charCodeDefinitions.isNewline;
     var isName = charCodeDefinitions.isName;
     var isValidEscape = charCodeDefinitions.isValidEscape;
@@ -1708,7 +1720,7 @@
     var charCodeCategory = charCodeDefinitions.charCodeCategory;
     var isBOM$1 = charCodeDefinitions.isBOM;
 
-
+    var utils = utils$2;
     var cmpStr$3 = utils.cmpStr;
     var getNewlineLength = utils.getNewlineLength;
     var findWhiteSpaceEnd = utils.findWhiteSpaceEnd;
@@ -1720,7 +1732,7 @@
     var OFFSET_MASK = 0x00FFFFFF;
     var TYPE_SHIFT = 24;
 
-    function tokenize(source, stream) {
+    function tokenize$3(source, stream) {
         function getCharCode(offset) {
             return offset < sourceLength ? source.charCodeAt(offset) : 0;
         }
@@ -1942,15 +1954,15 @@
         }
 
         if (!stream) {
-            stream = new TokenStream_1();
+            stream = new TokenStream$3();
         }
 
         // ensure source is a string
         source = String(source || '');
 
         var sourceLength = source.length;
-        var offsetAndType = adoptBuffer(stream.offsetAndType, sourceLength + 1); // +1 because of eof-token
-        var balance = adoptBuffer(stream.balance, sourceLength + 1);
+        var offsetAndType = adoptBuffer$1(stream.offsetAndType, sourceLength + 1); // +1 because of eof-token
+        var balance = adoptBuffer$1(stream.balance, sourceLength + 1);
         var tokenCount = 0;
         var start = isBOM$1(getCharCode(0));
         var offset = start;
@@ -2271,23 +2283,23 @@
     }
 
     // extend tokenizer with constants
-    Object.keys(_const).forEach(function(key) {
-        tokenize[key] = _const[key];
+    Object.keys(constants$1).forEach(function(key) {
+        tokenize$3[key] = constants$1[key];
     });
 
     // extend tokenizer with static methods from utils
     Object.keys(charCodeDefinitions).forEach(function(key) {
-        tokenize[key] = charCodeDefinitions[key];
+        tokenize$3[key] = charCodeDefinitions[key];
     });
     Object.keys(utils).forEach(function(key) {
-        tokenize[key] = utils[key];
+        tokenize$3[key] = utils[key];
     });
 
-    var tokenizer$1 = tokenize;
+    var tokenizer$3 = tokenize$3;
 
-    var isDigit$3 = tokenizer$1.isDigit;
-    var cmpChar$4 = tokenizer$1.cmpChar;
-    var TYPE$E = tokenizer$1.TYPE;
+    var isDigit$3 = tokenizer$3.isDigit;
+    var cmpChar$4 = tokenizer$3.cmpChar;
+    var TYPE$E = tokenizer$3.TYPE;
 
     var DELIM$6 = TYPE$E.Delim;
     var WHITESPACE$9 = TYPE$E.WhiteSpace;
@@ -2522,9 +2534,9 @@
         return 0;
     };
 
-    var isHexDigit$2 = tokenizer$1.isHexDigit;
-    var cmpChar$3 = tokenizer$1.cmpChar;
-    var TYPE$D = tokenizer$1.TYPE;
+    var isHexDigit$2 = tokenizer$3.isHexDigit;
+    var cmpChar$3 = tokenizer$3.cmpChar;
+    var TYPE$D = tokenizer$3.TYPE;
 
     var IDENT$h = TYPE$D.Ident;
     var DELIM$5 = TYPE$D.Delim;
@@ -2681,14 +2693,15 @@
         return 0;
     };
 
-    var isIdentifierStart = tokenizer$1.isIdentifierStart;
-    var isHexDigit$1 = tokenizer$1.isHexDigit;
-    var isDigit$2 = tokenizer$1.isDigit;
-    var cmpStr$2 = tokenizer$1.cmpStr;
-    var consumeNumber$3 = tokenizer$1.consumeNumber;
-    var TYPE$C = tokenizer$1.TYPE;
-
-
+    var tokenizer$2 = tokenizer$3;
+    var isIdentifierStart = tokenizer$2.isIdentifierStart;
+    var isHexDigit$1 = tokenizer$2.isHexDigit;
+    var isDigit$2 = tokenizer$2.isDigit;
+    var cmpStr$2 = tokenizer$2.cmpStr;
+    var consumeNumber$3 = tokenizer$2.consumeNumber;
+    var TYPE$C = tokenizer$2.TYPE;
+    var anPlusB = genericAnPlusB;
+    var urange = genericUrange;
 
     var cssWideKeywords$1 = ['unset', 'initial', 'inherit'];
     var calcFunctionNames = ['calc(', '-moz-calc(', '-webkit-calc('];
@@ -3202,7 +3215,7 @@
         return 1;
     }
 
-    var generic = {
+    var generic$1 = {
         // token types
         'ident-token': tokenType(TYPE$C.Ident),
         'function-token': tokenType(TYPE$C.Function),
@@ -3238,8 +3251,8 @@
         'custom-property-name': customPropertyName,
         'hex-color': hexColor,
         'id-selector': idSelector, // element( <id-selector> )
-        'an-plus-b': genericAnPlusB,
-        'urange': genericUrange,
+        'an-plus-b': anPlusB,
+        'urange': urange,
         'declaration-value': declarationValue,
         'any-value': anyValue,
 
@@ -3266,6 +3279,8 @@
         '-ms-legacy-expression': func('expression')
     };
 
+    var createCustomError = createCustomError$3;
+
     var _SyntaxError = function SyntaxError(message, input, offset) {
         var error = createCustomError('SyntaxError', message);
 
@@ -3279,18 +3294,20 @@
         return error;
     };
 
+    var SyntaxError$3 = _SyntaxError;
+
     var TAB$1 = 9;
     var N$3 = 10;
     var F$2 = 12;
     var R$2 = 13;
     var SPACE$2 = 32;
 
-    var Tokenizer = function(str) {
+    var Tokenizer$1 = function(str) {
         this.str = str;
         this.pos = 0;
     };
 
-    Tokenizer.prototype = {
+    Tokenizer$1.prototype = {
         charCodeAt: function(pos) {
             return pos < this.str.length ? this.str.charCodeAt(pos) : 0;
         },
@@ -3327,12 +3344,13 @@
             return this.pos < this.str.length ? this.str.charAt(this.pos++) : '';
         },
         error: function(message) {
-            throw new _SyntaxError(message, this.str, this.pos);
+            throw new SyntaxError$3(message, this.str, this.pos);
         }
     };
 
-    var tokenizer = Tokenizer;
+    var tokenizer$1 = Tokenizer$1;
 
+    var Tokenizer = tokenizer$1;
     var TAB = 9;
     var N$2 = 10;
     var F$1 = 12;
@@ -3879,12 +3897,12 @@
         }
     }
 
-    function parse(source) {
-        var tokenizer$1 = new tokenizer(source);
-        var result = readImplicitGroup(tokenizer$1);
+    function parse$2(source) {
+        var tokenizer = new Tokenizer(source);
+        var result = readImplicitGroup(tokenizer);
 
-        if (tokenizer$1.pos !== source.length) {
-            tokenizer$1.error('Unexpected input');
+        if (tokenizer.pos !== source.length) {
+            tokenizer.error('Unexpected input');
         }
 
         // reduce redundant groups with single group term
@@ -3897,9 +3915,9 @@
 
     // warm up parse to elimitate code branches that never execute
     // fix soft deoptimizations (insufficient type feedback)
-    parse('[a&&<b>#|<\'c\'>*||e() f{2} /,(% g#{1,2} h{2,})]!');
+    parse$2('[a&&<b>#|<\'c\'>*||e() f{2} /,(% g#{1,2} h{2,})]!');
 
-    var parse_1 = parse;
+    var parse_1 = parse$2;
 
     var noop$2 = function() {};
 
@@ -3907,7 +3925,7 @@
         return typeof value === 'function' ? value : noop$2;
     }
 
-    var walk = function(node, options, context) {
+    var walk$1 = function(node, options, context) {
         function walk(node) {
             enter.call(context, node);
 
@@ -3954,7 +3972,9 @@
         walk(node);
     };
 
-    var tokenStream = new TokenStream_1();
+    var tokenize$2 = tokenizer$3;
+    var TokenStream$2 = TokenStream_1;
+    var tokenStream = new TokenStream$2();
     var astToTokens = {
         decorator: function(handlers) {
             var curNode = null;
@@ -3982,19 +4002,19 @@
                     }
                 },
                 result: function() {
-                    return prepareTokens(buffer, nodes);
+                    return prepareTokens$1(buffer, nodes);
                 }
             };
         }
     };
 
-    function prepareTokens(str, nodes) {
+    function prepareTokens$1(str, nodes) {
         var tokens = [];
         var nodesOffset = 0;
         var nodesIndex = 0;
         var currentNode = nodes ? nodes[nodesIndex].node : null;
 
-        tokenizer$1(str, tokenStream);
+        tokenize$2(str, tokenStream);
 
         while (!tokenStream.eof) {
             if (nodes) {
@@ -4020,11 +4040,13 @@
 
     var prepareTokens_1 = function(value, syntax) {
         if (typeof value === 'string') {
-            return prepareTokens(value, null);
+            return prepareTokens$1(value, null);
         }
 
         return syntax.generate(value, astToTokens);
     };
+
+    var parse$1 = parse_1;
 
     var MATCH$1 = { type: 'Match' };
     var MISMATCH$1 = { type: 'Mismatch' };
@@ -4458,13 +4480,13 @@
         }
     }
 
-    var matchGraph = {
+    var matchGraph$1 = {
         MATCH: MATCH$1,
         MISMATCH: MISMATCH$1,
         DISALLOW_EMPTY: DISALLOW_EMPTY$1,
         buildMatchGraph: function(syntaxTree, ref) {
             if (typeof syntaxTree === 'string') {
-                syntaxTree = parse_1(syntaxTree);
+                syntaxTree = parse$1(syntaxTree);
             }
 
             return {
@@ -4477,7 +4499,7 @@
     };
 
     var hasOwnProperty$4 = Object.prototype.hasOwnProperty;
-
+    var matchGraph = matchGraph$1;
     var MATCH = matchGraph.MATCH;
     var MISMATCH = matchGraph.MISMATCH;
     var DISALLOW_EMPTY = matchGraph.DISALLOW_EMPTY;
@@ -5179,12 +5201,14 @@
         });
     }
 
-    var trace = {
+    var trace$1 = {
         getTrace: getTrace,
         isType: isType,
         isProperty: isProperty,
         isKeyword: isKeyword
     };
+
+    var List$5 = List_1;
 
     function getFirstMatchNode(matchNode) {
         if ('node' in matchNode) {
@@ -5212,7 +5236,7 @@
 
                 lexer.syntax.walk(ast, function(node, item, list) {
                     if (node === start) {
-                        var nodes = new List_1();
+                        var nodes = new List$5();
 
                         do {
                             nodes.appendData(item.data);
@@ -5246,10 +5270,11 @@
         return fragments;
     }
 
-    var search = {
+    var search$1 = {
         matchFragments: matchFragments
     };
 
+    var List$4 = List_1;
     var hasOwnProperty$3 = Object.prototype.hasOwnProperty;
 
     function isValidNumber(value) {
@@ -5325,7 +5350,7 @@
                                 if (typeof fieldType === 'string') {
                                     valid = node[key] && node[key].type === fieldType;
                                 } else if (Array.isArray(fieldType)) {
-                                    valid = node[key] instanceof List_1;
+                                    valid = node[key] instanceof List$4;
                                 }
                         }
                     }
@@ -5415,16 +5440,16 @@
 
     var SyntaxReferenceError = error.SyntaxReferenceError;
     var MatchError = error.MatchError;
-
-
-
-
-
-
-    var buildMatchGraph = matchGraph.buildMatchGraph;
+    var names$1 = names$2;
+    var generic = generic$1;
+    var parse = parse_1;
+    var generate = generate_1;
+    var walk = walk$1;
+    var prepareTokens = prepareTokens_1;
+    var buildMatchGraph = matchGraph$1.buildMatchGraph;
     var matchAsTree = match.matchAsTree;
-
-
+    var trace = trace$1;
+    var search = search$1;
     var getStructureFromConfig = structure.getStructureFromConfig;
     var cssWideKeywords = buildMatchGraph('inherit | initial | unset');
     var cssWideKeywordsWithExpression = buildMatchGraph('inherit | initial | unset | <-ms-legacy-expression>');
@@ -5436,7 +5461,7 @@
             if (map[name].syntax) {
                 result[name] = syntaxAsAst
                     ? map[name].syntax
-                    : generate_1(map[name].syntax, { compact: compact });
+                    : generate(map[name].syntax, { compact: compact });
             }
         }
 
@@ -5466,7 +5491,7 @@
     }
 
     function matchSyntax(lexer, syntax, value, useCommon) {
-        var tokens = prepareTokens_1(value, lexer.syntax);
+        var tokens = prepareTokens(value, lexer.syntax);
         var result;
 
         if (valueHasVar(tokens)) {
@@ -5491,7 +5516,7 @@
         return buildMatchResult(result.match, null, result.iterations);
     }
 
-    var Lexer = function(config, syntax, structure) {
+    var Lexer$1 = function(config, syntax, structure) {
         this.valueCommonSyntax = cssWideKeywords;
         this.syntax = syntax;
         this.generic = false;
@@ -5528,7 +5553,7 @@
         }
     };
 
-    Lexer.prototype = {
+    Lexer$1.prototype = {
         structure: {},
         checkStructure: function(ast) {
             function collectWarning(node, message) {
@@ -5572,7 +5597,7 @@
                     Object.defineProperty(descriptor, 'syntax', {
                         get: function() {
                             Object.defineProperty(descriptor, 'syntax', {
-                                value: parse_1(syntax)
+                                value: parse(syntax)
                             });
 
                             return descriptor.syntax;
@@ -5619,7 +5644,7 @@
         },
 
         matchAtrulePrelude: function(atruleName, prelude) {
-            var atrule = names.keyword(atruleName);
+            var atrule = names$1.keyword(atruleName);
 
             var atrulePreludeSyntax = atrule.vendor
                 ? this.getAtrulePrelude(atrule.name) || this.getAtrulePrelude(atrule.basename)
@@ -5636,8 +5661,8 @@
             return matchSyntax(this, atrulePreludeSyntax, prelude, true);
         },
         matchAtruleDescriptor: function(atruleName, descriptorName, value) {
-            var atrule = names.keyword(atruleName);
-            var descriptor = names.keyword(descriptorName);
+            var atrule = names$1.keyword(atruleName);
+            var descriptor = names$1.keyword(descriptorName);
 
             var atruleEntry = atrule.vendor
                 ? this.atrules[atrule.name] || this.atrules[atrule.basename]
@@ -5669,7 +5694,7 @@
             return this.matchProperty(node.property, node.value);
         },
         matchProperty: function(propertyName, value) {
-            var property = names.property(propertyName);
+            var property = names$1.property(propertyName);
 
             // don't match syntax for a custom property
             if (property.custom) {
@@ -5803,16 +5828,17 @@
         }
     };
 
-    var Lexer_1 = Lexer;
+    var Lexer_1 = Lexer$1;
 
-    var definitionSyntax = {
+    var definitionSyntax$1 = {
         SyntaxError: _SyntaxError,
         parse: parse_1,
         generate: generate_1,
-        walk: walk
+        walk: walk$1
     };
 
-    var isBOM = tokenizer$1.isBOM;
+    var adoptBuffer = adoptBuffer$2;
+    var isBOM = tokenizer$3.isBOM;
 
     var N$1 = 10;
     var F = 12;
@@ -5851,13 +5877,13 @@
         host.columns = columns;
     }
 
-    var OffsetToLocation = function() {
+    var OffsetToLocation$1 = function() {
         this.lines = null;
         this.columns = null;
         this.linesAndColumnsComputed = false;
     };
 
-    OffsetToLocation.prototype = {
+    OffsetToLocation$1.prototype = {
         setSource: function(source, startOffset, startLine, startColumn) {
             this.source = source;
             this.startOffset = typeof startOffset === 'undefined' ? 0 : startOffset;
@@ -5901,13 +5927,13 @@
         }
     };
 
-    var OffsetToLocation_1 = OffsetToLocation;
+    var OffsetToLocation_1 = OffsetToLocation$1;
 
-    var TYPE$A = tokenizer$1.TYPE;
+    var TYPE$A = tokenizer$3.TYPE;
     var WHITESPACE$8 = TYPE$A.WhiteSpace;
     var COMMENT$7 = TYPE$A.Comment;
 
-    var sequence = function readSequence(recognizer) {
+    var sequence$1 = function readSequence(recognizer) {
         var children = this.createList();
         var child = null;
         var context = {
@@ -5958,12 +5984,18 @@
         return children;
     };
 
-    var findWhiteSpaceStart = utils.findWhiteSpaceStart;
-
+    var OffsetToLocation = OffsetToLocation_1;
+    var SyntaxError$2 = _SyntaxError$1;
+    var TokenStream$1 = TokenStream_1;
+    var List$3 = List_1;
+    var tokenize$1 = tokenizer$3;
+    var constants = _const;
+    var findWhiteSpaceStart = utils$2.findWhiteSpaceStart;
+    var sequence = sequence$1;
     var noop$1 = function() {};
 
-    var TYPE$z = _const.TYPE;
-    var NAME$1 = _const.NAME;
+    var TYPE$z = constants.TYPE;
+    var NAME$1 = constants.NAME;
     var WHITESPACE$7 = TYPE$z.WhiteSpace;
     var IDENT$g = TYPE$z.Ident;
     var FUNCTION$6 = TYPE$z.Function;
@@ -6037,10 +6069,10 @@
         return parserConfig;
     }
 
-    var create$4 = function createParser(config) {
+    var create$3 = function createParser(config) {
         var parser = {
-            scanner: new TokenStream_1(),
-            locationMap: new OffsetToLocation_1(),
+            scanner: new TokenStream$1(),
+            locationMap: new OffsetToLocation(),
 
             filename: '<unknown>',
             needPositions: false,
@@ -6054,10 +6086,10 @@
             readSequence: sequence,
 
             createList: function() {
-                return new List_1();
+                return new List$3();
             },
             createSingleNodeList: function(node) {
-                return new List_1().appendData(node);
+                return new List$3().appendData(node);
             },
             getFirstListNode: function(list) {
                 return list && list.first();
@@ -6190,7 +6222,7 @@
                         ? this.locationMap.getLocation(findWhiteSpaceStart(this.scanner.source, this.scanner.source.length - 1))
                         : this.locationMap.getLocation(this.scanner.tokenStart);
 
-                throw new _SyntaxError$1(
+                throw new SyntaxError$2(
                     message || 'Unexpected input',
                     this.scanner.source,
                     location.offset,
@@ -6211,7 +6243,7 @@
             var context = options.context || 'default';
             var ast;
 
-            tokenizer$1(source, parser.scanner);
+            tokenize$1(source, parser.scanner);
             parser.locationMap.setSource(
                 source,
                 options.offset,
@@ -6262,7 +6294,7 @@
         }
     }
 
-    var create$3 = function createGenerator(config) {
+    var create$2 = function createGenerator(config) {
         function processNode(node) {
             if (hasOwnProperty$2.call(types, node.type)) {
                 types[node.type].call(this, node);
@@ -6304,13 +6336,15 @@
         };
     };
 
-    var create$2 = function createConvertors(walk) {
+    var List$2 = List_1;
+
+    var create$1 = function createConvertors(walk) {
         return {
             fromPlainObject: function(ast) {
                 walk(ast, {
                     enter: function(node) {
-                        if (node.children && node.children instanceof List_1 === false) {
-                            node.children = new List_1().fromArray(node.children);
+                        if (node.children && node.children instanceof List$2 === false) {
+                            node.children = new List$2().fromArray(node.children);
                         }
                     }
                 });
@@ -6320,7 +6354,7 @@
             toPlainObject: function(ast) {
                 walk(ast, {
                     leave: function(node) {
-                        if (node.children && node.children instanceof List_1) {
+                        if (node.children && node.children instanceof List$2) {
                             node.children = node.children.toArray();
                         }
                     }
@@ -6474,7 +6508,7 @@
         };
     }
 
-    var create$1 = function createWalker(config) {
+    var create = function createWalker(config) {
         var types = getTypesFromConfig(config);
         var iteratorsNatural = {};
         var iteratorsReverse = {};
@@ -6595,14 +6629,16 @@
         return walk;
     };
 
-    var clone = function clone(node) {
+    var List$1 = List_1;
+
+    var clone$1 = function clone(node) {
         var result = {};
 
         for (var key in node) {
             var value = node[key];
 
             if (value) {
-                if (Array.isArray(value) || value instanceof List_1) {
+                if (Array.isArray(value) || value instanceof List$1) {
                     value = value.map(clone);
                 } else if (value.constructor === Object) {
                     value = clone(value);
@@ -6651,7 +6687,7 @@
         }
     }
 
-    function mix(dest, src, shape) {
+    function mix$1(dest, src, shape) {
         for (var key in shape) {
             if (hasOwnProperty.call(shape, key) === false) {
                 continue;
@@ -6679,7 +6715,7 @@
                         if (hasOwnProperty.call(dest[key], name)) {
                             res[name] = {};
                             if (dest[key] && dest[key][name]) {
-                                mix(res[name], dest[key][name], innerShape);
+                                mix$1(res[name], dest[key][name], innerShape);
                             }
                         }
                     }
@@ -6689,7 +6725,7 @@
                                 res[name] = {};
                             }
                             if (src[key] && src[key][name]) {
-                                mix(res[name], src[key][name], innerShape);
+                                mix$1(res[name], src[key][name], innerShape);
                             }
                         }
                     }
@@ -6701,20 +6737,34 @@
     }
 
     var mix_1 = function(dest, src) {
-        return mix(dest, src, shape$1);
+        return mix$1(dest, src, shape$1);
     };
 
+    var List = List_1;
+    var SyntaxError$1 = _SyntaxError$1;
+    var TokenStream = TokenStream_1;
+    var Lexer = Lexer_1;
+    var definitionSyntax = definitionSyntax$1;
+    var tokenize = tokenizer$3;
+    var createParser = create$3;
+    var createGenerator = create$2;
+    var createConvertor = create$1;
+    var createWalker = create;
+    var clone = clone$1;
+    var names = names$2;
+    var mix = mix_1;
+
     function createSyntax(config) {
-        var parse = create$4(config);
-        var walk = create$1(config);
-        var generate = create$3(config);
-        var convert = create$2(walk);
+        var parse = createParser(config);
+        var walk = createWalker(config);
+        var generate = createGenerator(config);
+        var convert = createConvertor(walk);
 
         var syntax = {
-            List: List_1,
-            SyntaxError: _SyntaxError$1,
-            TokenStream: TokenStream_1,
-            Lexer: Lexer_1,
+            List: List,
+            SyntaxError: SyntaxError$1,
+            TokenStream: TokenStream,
+            Lexer: Lexer,
 
             vendorPrefix: names.vendorPrefix,
             keyword: names.keyword,
@@ -6724,10 +6774,10 @@
             definitionSyntax: definitionSyntax,
             lexer: null,
             createLexer: function(config) {
-                return new Lexer_1(config, syntax, syntax.lexer.structure);
+                return new Lexer(config, syntax, syntax.lexer.structure);
             },
 
-            tokenize: tokenizer$1,
+            tokenize: tokenize,
             parse: parse,
             walk: walk,
             generate: generate,
@@ -6741,19 +6791,19 @@
             toPlainObject: convert.toPlainObject,
 
             createSyntax: function(config) {
-                return createSyntax(mix_1({}, config));
+                return createSyntax(mix({}, config));
             },
             fork: function(extension) {
-                var base = mix_1({}, config); // copy of config
+                var base = mix({}, config); // copy of config
                 return createSyntax(
                     typeof extension === 'function'
                         ? extension(base, Object.assign)
-                        : mix_1(base, extension)
+                        : mix(base, extension)
                 );
             }
         };
 
-        syntax.lexer = new Lexer_1({
+        syntax.lexer = new Lexer({
             generic: true,
             types: config.types,
             atrules: config.atrules,
@@ -6763,15 +6813,11 @@
 
         return syntax;
     }
-    var create_1 = function(config) {
-        return createSyntax(mix_1({}, config));
+    create$4.create = function(config) {
+        return createSyntax(mix({}, config));
     };
 
-    var create = {
-    	create: create_1
-    };
-
-    var mdnAtrules = {
+    var require$$0 = {
     	
     };
 
@@ -6868,7 +6914,7 @@
     var zoom = {
     	syntax: "normal | reset | <number> | <percentage>"
     };
-    var mdnProperties = {
+    var require$$1 = {
     	all: all,
     	"backdrop-filter": {
     	syntax: "none | <filter-function-list>"
@@ -7442,7 +7488,7 @@
     var size = {
     	syntax: "closest-side | farthest-side | closest-corner | farthest-corner | <length> | <length-percentage>{2}"
     };
-    var mdnSyntaxes = {
+    var require$$2 = {
     	"absolute-size": {
     	syntax: "xx-small | x-small | small | medium | large | x-large | xx-large | xxx-large"
     },
@@ -7603,7 +7649,7 @@
     	syntax: "image-set( <image-set-option># )"
     },
     	"image-set-option": {
-    	syntax: "[ <image> | <string> ] <resolution>"
+    	syntax: "[ <image> | <string> ] [ <resolution> || type(<string>) ]"
     },
     	"image-src": {
     	syntax: "<url> | <string>"
@@ -7828,10 +7874,15 @@
     		syntax: "<integer [0,∞]>"
     	}
     };
-    var patch = {
+    var require$$3 = {
     	properties: properties,
     	syntaxes: syntaxes
     };
+
+    var mdnAtrules = require$$0;
+    var mdnProperties = require$$1;
+    var mdnSyntaxes = require$$2;
+    var patch = require$$3;
 
     function preprocessAtrules(dict) {
         var result = Object.create(null);
@@ -7883,15 +7934,15 @@
         return result;
     }
 
-    var data = {
+    var data$1 = {
         types: buildDictionary(mdnSyntaxes, patch.syntaxes),
         atrules: preprocessAtrules(mdnAtrules),
         properties: buildDictionary(mdnProperties, patch.properties)
     };
 
-    var cmpChar$2 = tokenizer$1.cmpChar;
-    var isDigit$1 = tokenizer$1.isDigit;
-    var TYPE$y = tokenizer$1.TYPE;
+    var cmpChar$2 = tokenizer$3.cmpChar;
+    var isDigit$1 = tokenizer$3.isDigit;
+    var TYPE$y = tokenizer$3.TYPE;
 
     var WHITESPACE$6 = TYPE$y.WhiteSpace;
     var COMMENT$6 = TYPE$y.Comment;
@@ -8187,7 +8238,8 @@
         }
     };
 
-    var TYPE$x = tokenizer$1.TYPE;
+    var tokenizer = tokenizer$3;
+    var TYPE$x = tokenizer.TYPE;
 
     var WhiteSpace$1 = TYPE$x.WhiteSpace;
     var Semicolon = TYPE$x.Semicolon;
@@ -8274,7 +8326,7 @@
         }
     };
 
-    var TYPE$w = tokenizer$1.TYPE;
+    var TYPE$w = tokenizer$3.TYPE;
     var rawMode$5 = Raw.mode;
 
     var ATKEYWORD$2 = TYPE$w.AtKeyword;
@@ -8382,7 +8434,7 @@
         walkContext: 'atrule'
     };
 
-    var TYPE$v = tokenizer$1.TYPE;
+    var TYPE$v = tokenizer$3.TYPE;
 
     var SEMICOLON$3 = TYPE$v.Semicolon;
     var LEFTCURLYBRACKET$2 = TYPE$v.LeftCurlyBracket;
@@ -8434,7 +8486,7 @@
         walkContext: 'atrulePrelude'
     };
 
-    var TYPE$u = tokenizer$1.TYPE;
+    var TYPE$u = tokenizer$3.TYPE;
 
     var IDENT$e = TYPE$u.Ident;
     var STRING$3 = TYPE$u.String;
@@ -8600,7 +8652,7 @@
         }
     };
 
-    var TYPE$t = tokenizer$1.TYPE;
+    var TYPE$t = tokenizer$3.TYPE;
     var rawMode$4 = Raw.mode;
 
     var WHITESPACE$5 = TYPE$t.WhiteSpace;
@@ -8692,7 +8744,7 @@
         walkContext: 'block'
     };
 
-    var TYPE$s = tokenizer$1.TYPE;
+    var TYPE$s = tokenizer$3.TYPE;
 
     var LEFTSQUAREBRACKET$2 = TYPE$s.LeftSquareBracket;
     var RIGHTSQUAREBRACKET = TYPE$s.RightSquareBracket;
@@ -8727,7 +8779,7 @@
         }
     };
 
-    var CDC$1 = tokenizer$1.TYPE.CDC;
+    var CDC$1 = tokenizer$3.TYPE.CDC;
 
     var CDC_1 = {
         name: 'CDC',
@@ -8747,7 +8799,7 @@
         }
     };
 
-    var CDO$1 = tokenizer$1.TYPE.CDO;
+    var CDO$1 = tokenizer$3.TYPE.CDO;
 
     var CDO_1 = {
         name: 'CDO',
@@ -8767,7 +8819,7 @@
         }
     };
 
-    var TYPE$r = tokenizer$1.TYPE;
+    var TYPE$r = tokenizer$3.TYPE;
 
     var IDENT$d = TYPE$r.Ident;
     var FULLSTOP$2 = 0x002E; // U+002E FULL STOP (.)
@@ -8797,7 +8849,7 @@
         }
     };
 
-    var TYPE$q = tokenizer$1.TYPE;
+    var TYPE$q = tokenizer$3.TYPE;
 
     var IDENT$c = TYPE$q.Ident;
     var PLUSSIGN$4 = 0x002B;        // U+002B PLUS SIGN (+)
@@ -8853,7 +8905,7 @@
         }
     };
 
-    var TYPE$p = tokenizer$1.TYPE;
+    var TYPE$p = tokenizer$3.TYPE;
 
     var COMMENT$4 = TYPE$p.Comment;
     var ASTERISK$4 = 0x002A;        // U+002A ASTERISK (*)
@@ -8890,8 +8942,8 @@
         }
     };
 
-    var isCustomProperty = names.isCustomProperty;
-    var TYPE$o = tokenizer$1.TYPE;
+    var isCustomProperty = names$2.isCustomProperty;
+    var TYPE$o = tokenizer$3.TYPE;
     var rawMode$3 = Raw.mode;
 
     var IDENT$b = TYPE$o.Ident;
@@ -9039,7 +9091,7 @@
         return important === 'important' ? true : important;
     }
 
-    var TYPE$n = tokenizer$1.TYPE;
+    var TYPE$n = tokenizer$3.TYPE;
     var rawMode$2 = Raw.mode;
 
     var WHITESPACE$4 = TYPE$n.WhiteSpace;
@@ -9088,8 +9140,8 @@
         }
     };
 
-    var consumeNumber$2 = utils.consumeNumber;
-    var TYPE$m = tokenizer$1.TYPE;
+    var consumeNumber$2 = utils$2.consumeNumber;
+    var TYPE$m = tokenizer$3.TYPE;
 
     var DIMENSION$4 = TYPE$m.Dimension;
 
@@ -9118,7 +9170,7 @@
         }
     };
 
-    var TYPE$l = tokenizer$1.TYPE;
+    var TYPE$l = tokenizer$3.TYPE;
 
     var RIGHTPARENTHESIS$5 = TYPE$l.RightParenthesis;
 
@@ -9159,7 +9211,7 @@
         walkContext: 'function'
     };
 
-    var TYPE$k = tokenizer$1.TYPE;
+    var TYPE$k = tokenizer$3.TYPE;
 
     var HASH$3 = TYPE$k.Hash;
 
@@ -9186,7 +9238,7 @@
         }
     };
 
-    var TYPE$j = tokenizer$1.TYPE;
+    var TYPE$j = tokenizer$3.TYPE;
 
     var IDENT$a = TYPE$j.Ident;
 
@@ -9207,7 +9259,7 @@
         }
     };
 
-    var TYPE$i = tokenizer$1.TYPE;
+    var TYPE$i = tokenizer$3.TYPE;
 
     var HASH$2 = TYPE$i.Hash;
 
@@ -9235,7 +9287,7 @@
         }
     };
 
-    var TYPE$h = tokenizer$1.TYPE;
+    var TYPE$h = tokenizer$3.TYPE;
 
     var IDENT$9 = TYPE$h.Ident;
     var NUMBER$5 = TYPE$h.Number;
@@ -9312,7 +9364,7 @@
         }
     };
 
-    var TYPE$g = tokenizer$1.TYPE;
+    var TYPE$g = tokenizer$3.TYPE;
 
     var WHITESPACE$3 = TYPE$g.WhiteSpace;
     var COMMENT$2 = TYPE$g.Comment;
@@ -9381,7 +9433,7 @@
         }
     };
 
-    var COMMA$3 = tokenizer$1.TYPE.Comma;
+    var COMMA$3 = tokenizer$3.TYPE.Comma;
 
     var MediaQueryList = {
         name: 'MediaQueryList',
@@ -9470,7 +9522,7 @@
         }
     };
 
-    var NUMBER$4 = tokenizer$1.TYPE.Number;
+    var NUMBER$4 = tokenizer$3.TYPE.Number;
 
     var _Number = {
         name: 'Number',
@@ -9511,7 +9563,7 @@
         }
     };
 
-    var TYPE$f = tokenizer$1.TYPE;
+    var TYPE$f = tokenizer$3.TYPE;
 
     var LEFTPARENTHESIS$3 = TYPE$f.LeftParenthesis;
     var RIGHTPARENTHESIS$3 = TYPE$f.RightParenthesis;
@@ -9546,8 +9598,8 @@
         }
     };
 
-    var consumeNumber$1 = utils.consumeNumber;
-    var TYPE$e = tokenizer$1.TYPE;
+    var consumeNumber$1 = utils$2.consumeNumber;
+    var TYPE$e = tokenizer$3.TYPE;
 
     var PERCENTAGE$2 = TYPE$e.Percentage;
 
@@ -9574,7 +9626,7 @@
         }
     };
 
-    var TYPE$d = tokenizer$1.TYPE;
+    var TYPE$d = tokenizer$3.TYPE;
 
     var IDENT$7 = TYPE$d.Ident;
     var FUNCTION$5 = TYPE$d.Function;
@@ -9636,7 +9688,7 @@
         walkContext: 'function'
     };
 
-    var TYPE$c = tokenizer$1.TYPE;
+    var TYPE$c = tokenizer$3.TYPE;
 
     var IDENT$6 = TYPE$c.Ident;
     var FUNCTION$4 = TYPE$c.Function;
@@ -9699,8 +9751,8 @@
         walkContext: 'function'
     };
 
-    var isDigit = tokenizer$1.isDigit;
-    var TYPE$b = tokenizer$1.TYPE;
+    var isDigit = tokenizer$3.isDigit;
+    var TYPE$b = tokenizer$3.TYPE;
 
     var NUMBER$3 = TYPE$b.Number;
     var DELIM$2 = TYPE$b.Delim;
@@ -9766,7 +9818,7 @@
         }
     };
 
-    var TYPE$a = tokenizer$1.TYPE;
+    var TYPE$a = tokenizer$3.TYPE;
     var rawMode$1 = Raw.mode;
 
     var LEFTCURLYBRACKET = TYPE$a.LeftCurlyBracket;
@@ -9854,7 +9906,7 @@
         }
     };
 
-    var TYPE$9 = tokenizer$1.TYPE;
+    var TYPE$9 = tokenizer$3.TYPE;
 
     var COMMA$2 = TYPE$9.Comma;
 
@@ -9894,7 +9946,7 @@
         walkContext: 'selector'
     };
 
-    var STRING$2 = tokenizer$1.TYPE.String;
+    var STRING$2 = tokenizer$3.TYPE.String;
 
     var _String = {
         name: 'String',
@@ -9913,7 +9965,7 @@
         }
     };
 
-    var TYPE$8 = tokenizer$1.TYPE;
+    var TYPE$8 = tokenizer$3.TYPE;
 
     var WHITESPACE$2 = TYPE$8.WhiteSpace;
     var COMMENT$1 = TYPE$8.Comment;
@@ -9994,7 +10046,7 @@
         walkContext: 'stylesheet'
     };
 
-    var TYPE$7 = tokenizer$1.TYPE;
+    var TYPE$7 = tokenizer$3.TYPE;
 
     var IDENT$5 = TYPE$7.Ident;
     var ASTERISK$2 = 0x002A;     // U+002A ASTERISK (*)
@@ -10048,10 +10100,10 @@
         }
     };
 
-    var isHexDigit = tokenizer$1.isHexDigit;
-    var cmpChar$1 = tokenizer$1.cmpChar;
-    var TYPE$6 = tokenizer$1.TYPE;
-    var NAME = tokenizer$1.NAME;
+    var isHexDigit = tokenizer$3.isHexDigit;
+    var cmpChar$1 = tokenizer$3.cmpChar;
+    var TYPE$6 = tokenizer$3.TYPE;
+    var NAME = tokenizer$3.NAME;
 
     var IDENT$4 = TYPE$6.Ident;
     var NUMBER$2 = TYPE$6.Number;
@@ -10221,9 +10273,9 @@
         }
     };
 
-    var isWhiteSpace = tokenizer$1.isWhiteSpace;
-    var cmpStr$1 = tokenizer$1.cmpStr;
-    var TYPE$5 = tokenizer$1.TYPE;
+    var isWhiteSpace = tokenizer$3.isWhiteSpace;
+    var cmpStr$1 = tokenizer$3.cmpStr;
+    var TYPE$5 = tokenizer$3.TYPE;
 
     var FUNCTION$3 = TYPE$5.Function;
     var URL$2 = TYPE$5.Url;
@@ -10311,7 +10363,7 @@
         }
     };
 
-    var WHITESPACE$1 = tokenizer$1.TYPE.WhiteSpace;
+    var WHITESPACE$1 = tokenizer$3.TYPE.WhiteSpace;
     var SPACE = Object.freeze({
         type: 'WhiteSpace',
         loc: null,
@@ -10381,6 +10433,8 @@
         WhiteSpace: WhiteSpace
     };
 
+    var data = data$1;
+
     var lexer = {
         generic: true,
         types: data.types,
@@ -10389,9 +10443,9 @@
         node: node
     };
 
-    var cmpChar = tokenizer$1.cmpChar;
-    var cmpStr = tokenizer$1.cmpStr;
-    var TYPE$4 = tokenizer$1.TYPE;
+    var cmpChar = tokenizer$3.cmpChar;
+    var cmpStr = tokenizer$3.cmpStr;
+    var TYPE$4 = tokenizer$3.TYPE;
 
     var IDENT$3 = TYPE$4.Ident;
     var STRING$1 = TYPE$4.String;
@@ -10481,7 +10535,7 @@
         getNode: _default
     };
 
-    var TYPE$3 = tokenizer$1.TYPE;
+    var TYPE$3 = tokenizer$3.TYPE;
 
     var DELIM = TYPE$3.Delim;
     var IDENT$2 = TYPE$3.Ident;
@@ -10583,7 +10637,7 @@
         );
     };
 
-    var TYPE$2 = tokenizer$1.TYPE;
+    var TYPE$2 = tokenizer$3.TYPE;
     var rawMode = Raw.mode;
 
     var COMMA = TYPE$2.Comma;
@@ -10633,7 +10687,7 @@
         }
     };
 
-    var TYPE$1 = tokenizer$1.TYPE;
+    var TYPE$1 = tokenizer$3.TYPE;
 
     var STRING = TYPE$1.String;
     var IDENT$1 = TYPE$1.Ident;
@@ -10700,7 +10754,7 @@
         }
     };
 
-    var TYPE = tokenizer$1.TYPE;
+    var TYPE = tokenizer$3.TYPE;
 
     var WHITESPACE = TYPE.WhiteSpace;
     var COMMENT = TYPE.Comment;
@@ -10926,7 +10980,7 @@
         return dest;
     }
 
-    var syntax = create.create(
+    var syntax = create$4.create(
         merge(
             lexer,
             parser,
