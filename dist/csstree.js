@@ -6915,6 +6915,9 @@
     	syntax: "normal | reset | <number> | <percentage>"
     };
     var require$$1 = {
+    	"accent-color": {
+    	syntax: "auto | <color>"
+    },
     	all: all,
     	"backdrop-filter": {
     	syntax: "none | <filter-function-list>"
