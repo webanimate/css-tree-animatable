@@ -1,3 +1,9 @@
+## [1.0.12](https://github.com/webanimate/css-tree-animatable/compare/v1.0.11...v1.0.12) (2021-07-16)
+
+### Features
+
+- upgrade mdn-data-animatable to v1.1.12; upgrade devDependencies ([372b628](https://github.com/webanimate/css-tree-animatable/commit/372b628387a897de1f38e89b73bce83cf5ef5d53))
+
 ## [1.0.11](https://github.com/webanimate/css-tree-animatable/compare/v1.0.10...v1.0.11) (2021-06-16)
 
 ### Features
