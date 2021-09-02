@@ -7100,7 +7100,7 @@
     	syntax: "<absolute-size> | <relative-size> | <length-percentage>"
     },
     	"font-size-adjust": {
-    	syntax: "none | <number>"
+    	syntax: "none | [ ex-height | cap-height | ch-width | ic-width | ic-height ]? [ from-font | <number> ]"
     },
     	"font-stretch": {
     	syntax: "<font-stretch-absolute>"
@@ -7286,7 +7286,7 @@
     },
     	scale: scale,
     	"scrollbar-color": {
-    	syntax: "auto | dark | light | <color>{2}"
+    	syntax: "auto | <color>{2}"
     },
     	"scroll-margin": {
     	syntax: "<length>{1,4}"
