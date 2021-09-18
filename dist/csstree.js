@@ -7408,7 +7408,7 @@
     	visibility: visibility,
     	width: width,
     	"word-spacing": {
-    	syntax: "normal | <length-percentage>"
+    	syntax: "normal | <length>"
     },
     	"z-index": {
     	syntax: "auto | <integer>"
