@@ -2,7 +2,7 @@
     typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
     typeof define === 'function' && define.amd ? define(factory) :
     (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.csstree = factory());
-}(this, (function () { 'use strict';
+})(this, (function () { 'use strict';
 
     var create$4 = {};
 
@@ -7128,6 +7128,9 @@
     	"inline-size": {
     	syntax: "<'width'>"
     },
+    	"input-security": {
+    	syntax: "auto | none"
+    },
     	inset: inset,
     	"inset-block": {
     	syntax: "<'top'>{1,2}"
@@ -10995,4 +10998,4 @@
 
     return lib;
 
-})));
+}));
