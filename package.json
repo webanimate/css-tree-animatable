@@ -29,7 +29,7 @@
     "up": "yarn upgrade-interactive && ncu -i && yarn"
   },
   "dependencies": {
-    "mdn-data-animatable": "^1.1.15"
+    "mdn-data-animatable": "^1.1.16"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^21.0.1",

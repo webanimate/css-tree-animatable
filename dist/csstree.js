@@ -7471,7 +7471,7 @@
     	syntax: "border-box | padding-box | content-box"
     };
     var color = {
-    	syntax: "<rgb()> | <rgba()> | <hsl()> | <hsla()> | <hex-color> | <named-color> | currentcolor | <deprecated-system-color>"
+    	syntax: "<rgb()> | <rgba()> | <hsl()> | <hsla()> | <hwb()> | <hex-color> | <named-color> | currentcolor | <deprecated-system-color>"
     };
     var gradient = {
     	syntax: "<linear-gradient()> | <repeating-linear-gradient()> | <radial-gradient()> | <repeating-radial-gradient()> | <conic-gradient()>"
@@ -7643,6 +7643,9 @@
     	hue: hue,
     	"hue-rotate()": {
     	syntax: "hue-rotate( <angle> )"
+    },
+    	"hwb()": {
+    	syntax: "hwb( [<hue> | none] [<percentage> | none] [<percentage> | none] [ / [<alpha-value> | none] ]? )"
     },
     	"id-selector": {
     	syntax: "<hash-token>"
