@@ -18,7 +18,7 @@
   ],
   "scripts": {
     "build": "rollup -c",
-    "c": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0",
+    "c": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0 && yarn fix",
     "gen": "node generate.js",
     "fix": "yarn gen && yarn fix:eslint && yarn fix:prettier && yarn build",
     "fix:eslint": "eslint --fix \"**/*.*\"",
