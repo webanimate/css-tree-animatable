@@ -29,17 +29,17 @@
     "up": "yarn upgrade-interactive && ncu -i && yarn"
   },
   "dependencies": {
-    "mdn-data-animatable": "^1.1.16"
+    "mdn-data-animatable": "^1.1.18"
   },
   "devDependencies": {
-    "@rollup/plugin-commonjs": "^21.0.1",
+    "@rollup/plugin-commonjs": "^21.1.0",
     "@rollup/plugin-json": "^4.1.0",
-    "@rollup/plugin-node-resolve": "^13.1.1",
-    "eslint": "^8.5.0",
-    "eslint-config-prettier": "^8.3.0",
+    "@rollup/plugin-node-resolve": "^13.3.0",
+    "eslint": "^8.14.0",
+    "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-json": "^3.1.0",
-    "prettier": "^2.5.1",
-    "rollup": "^2.61.1",
+    "prettier": "^2.6.2",
+    "rollup": "~2.66.1",
     "rollup-plugin-terser": "^7.0.2"
   },
   "eslintConfig": {
