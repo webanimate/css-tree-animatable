@@ -6851,12 +6851,6 @@
 	var columns = {
 		syntax: "<'column-width'> || <'column-count'>"
 	};
-	var container = {
-		syntax: "<'container-name'> [ / <'container-type'> ]?"
-	};
-	var display = {
-		syntax: "[ <display-outside> || <display-inside> ] | <display-listitem> | <display-internal> | <display-box> | <display-legacy>"
-	};
 	var filter = {
 		syntax: "none | <filter-function-list>"
 	};
@@ -6868,9 +6862,6 @@
 	};
 	var gap = {
 		syntax: "<'row-gap'> <'column-gap'>?"
-	};
-	var grid = {
-		syntax: "<'grid-template'> | <'grid-template-rows'> / [ auto-flow && dense? ] <'grid-auto-columns'>? | [ auto-flow && dense? ] <'grid-auto-rows'>? / <'grid-template-columns'>"
 	};
 	var height = {
 		syntax: "auto | <length> | <percentage> | min-content | max-content | fit-content | fit-content(<length-percentage>)"
@@ -6896,14 +6887,8 @@
 	var order = {
 		syntax: "<integer>"
 	};
-	var orphans = {
-		syntax: "<integer>"
-	};
 	var outline = {
 		syntax: "[ <'outline-color'> || <'outline-style'> || <'outline-width'> ]"
-	};
-	var overlay = {
-		syntax: "none | auto"
 	};
 	var padding = {
 		syntax: "[ <length> | <percentage> ]{1,4}"
@@ -6932,9 +6917,6 @@
 	var visibility = {
 		syntax: "visible | hidden | collapse"
 	};
-	var widows = {
-		syntax: "<integer>"
-	};
 	var width = {
 		syntax: "auto | <length> | <percentage> | min-content | max-content | fit-content | fit-content(<length-percentage>)"
 	};
@@ -6946,33 +6928,15 @@
 		syntax: "auto | <color>"
 	},
 		all: all,
-		"animation-range": {
-		syntax: "[ <'animation-range-start'> <'animation-range-end'>? ]#"
-	},
-		"aspect-ratio": {
-		syntax: "auto | <ratio>"
-	},
 		"backdrop-filter": {
 		syntax: "none | <filter-function-list>"
 	},
 		background: background,
-		"background-clip": {
-		syntax: "<box>#"
-	},
 		"background-color": {
 		syntax: "<color>"
 	},
-		"background-origin": {
-		syntax: "<box>#"
-	},
 		"background-position": {
 		syntax: "<bg-position>#"
-	},
-		"background-position-x": {
-		syntax: "[ center | [ [ left | right | x-start | x-end ]? <length-percentage>? ]! ]#"
-	},
-		"background-position-y": {
-		syntax: "[ center | [ [ top | bottom | y-start | y-end ]? <length-percentage>? ]! ]#"
 	},
 		"background-size": {
 		syntax: "<bg-size>#"
@@ -6981,15 +6945,6 @@
 		syntax: "<'width'>"
 	},
 		border: border,
-		"border-block": {
-		syntax: "<'border-top-width'> || <'border-top-style'> || <color>"
-	},
-		"border-block-color": {
-		syntax: "<'border-top-color'>{1,2}"
-	},
-		"border-block-width": {
-		syntax: "<'border-top-width'>"
-	},
 		"border-block-end": {
 		syntax: "<'border-top-width'> || <'border-top-style'> || <color>"
 	},
@@ -7032,9 +6987,6 @@
 		"border-end-start-radius": {
 		syntax: "<length-percentage>{1,2}"
 	},
-		"border-image": {
-		syntax: "<'border-image-source'> || <'border-image-slice'> [ / <'border-image-width'> | / <'border-image-width'>? / <'border-image-outset'> ]? || <'border-image-repeat'>"
-	},
 		"border-image-outset": {
 		syntax: "[ <length> | <number> ]{1,4}"
 	},
@@ -7044,17 +6996,8 @@
 		"border-image-width": {
 		syntax: "[ <length-percentage> | <number> | auto ]{1,4}"
 	},
-		"border-inline": {
-		syntax: "<'border-top-width'> || <'border-top-style'> || <color>"
-	},
 		"border-inline-end": {
 		syntax: "<'border-top-width'> || <'border-top-style'> || <color>"
-	},
-		"border-inline-color": {
-		syntax: "<'border-top-color'>{1,2}"
-	},
-		"border-inline-width": {
-		syntax: "<'border-top-width'>"
 	},
 		"border-inline-end-color": {
 		syntax: "<'border-top-color'>"
@@ -7152,44 +7095,24 @@
 	},
 		columns: columns,
 		"contain-intrinsic-size": {
-		syntax: "[ auto? [ none | <length> ] ]{1,2}"
+		syntax: "[ none | <length> | auto <length> ]{1,2}"
 	},
 		"contain-intrinsic-block-size": {
-		syntax: "auto? [ none | <length> ]"
+		syntax: "none | <length> | auto <length>"
 	},
 		"contain-intrinsic-height": {
-		syntax: "auto? [ none | <length> ]"
+		syntax: "none | <length> | auto <length>"
 	},
 		"contain-intrinsic-inline-size": {
-		syntax: "auto? [ none | <length> ]"
+		syntax: "none | <length> | auto <length>"
 	},
 		"contain-intrinsic-width": {
-		syntax: "auto? [ none | <length> ]"
+		syntax: "none | <length> | auto <length>"
 	},
-		container: container,
-		"container-type": {
-		syntax: "normal | size | inline-size"
-	},
-		"content-visibility": {
-		syntax: "visible | auto | hidden"
-	},
-		"counter-increment": {
-		syntax: "[ <counter-name> <integer>? ]+ | none"
-	},
-		"counter-reset": {
-		syntax: "[ <counter-name> <integer>? | <reversed-counter-name> <integer>? ]+ | none"
-	},
-		"counter-set": {
-		syntax: "[ <counter-name> <integer>? ]+ | none"
-	},
-		display: display,
 		filter: filter,
 		flex: flex,
 		"flex-basis": {
 		syntax: "content | <'width'>"
-	},
-		"flex-flow": {
-		syntax: "<'flex-direction'> || <'flex-wrap'>"
 	},
 		"flex-grow": {
 		syntax: "<number>"
@@ -7198,9 +7121,6 @@
 		syntax: "<number>"
 	},
 		font: font,
-		"font-palette": {
-		syntax: "normal | light | dark | <palette-identifier>"
-	},
 		"font-variation-settings": {
 		syntax: "normal | [ <string> <number> ]#"
 	},
@@ -7213,20 +7133,10 @@
 		"font-stretch": {
 		syntax: "<font-stretch-absolute>"
 	},
-		"font-style": {
-		syntax: "normal | italic | oblique <angle>?"
-	},
 		"font-weight": {
 		syntax: "<font-weight-absolute> | bolder | lighter"
 	},
 		gap: gap,
-		grid: grid,
-		"grid-auto-columns": {
-		syntax: "<track-size>+"
-	},
-		"grid-auto-rows": {
-		syntax: "<track-size>+"
-	},
 		"grid-column-gap": {
 		syntax: "<length-percentage>"
 	},
@@ -7236,9 +7146,6 @@
 		"grid-row-gap": {
 		syntax: "<length-percentage>"
 	},
-		"grid-template": {
-		syntax: "none | [ <'grid-template-rows'> / <'grid-template-columns'> ] | [ <line-names>? <string> <track-size>? <line-names>? ]+ [ / <explicit-track-list> ]?"
-	},
 		"grid-template-columns": {
 		syntax: "none | <track-list> | <auto-track-list> | subgrid <line-name-list>?"
 	},
@@ -7246,12 +7153,6 @@
 		syntax: "none | <track-list> | <auto-track-list> | subgrid <line-name-list>?"
 	},
 		height: height,
-		"hyphenate-limit-chars": {
-		syntax: "[ auto | <integer> ]{1,3}"
-	},
-		"initial-letter": {
-		syntax: "normal | [ <number> <integer>? ]"
-	},
 		"inline-size": {
 		syntax: "<'width'>"
 	},
@@ -7286,12 +7187,6 @@
 	},
 		"line-height": {
 		syntax: "normal | <number> | <length> | <percentage>"
-	},
-		"line-height-step": {
-		syntax: "<length>"
-	},
-		"list-style": {
-		syntax: "<'list-style-type'> || <'list-style-position'> || <'list-style-image'>"
 	},
 		margin: margin,
 		"margin-block": {
@@ -7372,31 +7267,26 @@
 		syntax: "<length-percentage>"
 	},
 		"offset-path": {
-		syntax: "none | <offset-path> || <coord-box>"
+		syntax: "none | ray( [ <angle> && <size> && contain? ] ) | <path()> | <url> | [ <basic-shape> || <geometry-box> ]"
 	},
 		"offset-position": {
-		syntax: "normal | auto | <position>"
+		syntax: "auto | <position>"
 	},
 		"offset-rotate": {
 		syntax: "[ auto | reverse ] || <angle>"
 	},
 		opacity: opacity,
 		order: order,
-		orphans: orphans,
 		outline: outline,
 		"outline-color": {
-		syntax: "auto | <color>"
+		syntax: "<color> | invert"
 	},
 		"outline-offset": {
 		syntax: "<length>"
 	},
-		"outline-style": {
-		syntax: "auto | <'border-style'>"
-	},
 		"outline-width": {
 		syntax: "<line-width>"
 	},
-		overlay: overlay,
 		padding: padding,
 		"padding-block": {
 		syntax: "<'padding-left'>{1,2}"
@@ -7437,18 +7327,9 @@
 		"row-gap": {
 		syntax: "normal | <length-percentage>"
 	},
-		"ruby-align": {
-		syntax: "start | center | space-between | space-around"
-	},
-		"ruby-merge": {
-		syntax: "separate | collapse | auto"
-	},
 		scale: scale,
 		"scrollbar-color": {
 		syntax: "auto | <color>{2}"
-	},
-		"scrollbar-width": {
-		syntax: "auto | thin | none"
 	},
 		"scroll-margin": {
 		syntax: "<length>{1,4}"
@@ -7522,9 +7403,6 @@
 		"scroll-snap-destination": {
 		syntax: "<position>"
 	},
-		"scroll-timeline": {
-		syntax: "[ <'scroll-timeline-name'> <'scroll-timeline-axis'>? ]#"
-	},
 		"shape-image-threshold": {
 		syntax: "<alpha-value>"
 	},
@@ -7558,9 +7436,6 @@
 		"text-shadow": {
 		syntax: "none | <shadow-t>#"
 	},
-		"text-size-adjust": {
-		syntax: "none | auto | <percentage>"
-	},
 		"text-underline-offset": {
 		syntax: "auto | <length> | <percentage> "
 	},
@@ -7573,14 +7448,7 @@
 		"vertical-align": {
 		syntax: "baseline | sub | super | text-top | text-bottom | middle | top | bottom | <percentage> | <length>"
 	},
-		"view-timeline": {
-		syntax: "[ <'view-timeline-name'> <'view-timeline-axis'>? ]#"
-	},
-		"view-timeline-inset": {
-		syntax: "[ [ auto | <length-percentage> ]{1,2} ]#"
-	},
 		visibility: visibility,
-		widows: widows,
 		width: width,
 		"word-spacing": {
 		syntax: "normal | <length>"
@@ -7589,20 +7457,8 @@
 		syntax: "auto | <integer>"
 	},
 		zoom: zoom,
-		"animation-range-start": {
-		syntax: "[ normal | <length-percentage> | <timeline-range-name> <length-percentage>? ]#"
-	},
-		"animation-range-end": {
-		syntax: "[ normal | <length-percentage> | <timeline-range-name> <length-percentage>? ]#"
-	},
 		"border-top-style": {
 		syntax: "<line-style>"
-	},
-		"border-image-source": {
-		syntax: "none | <image>"
-	},
-		"border-image-repeat": {
-		syntax: "[ stretch | repeat | round | space ]{1,2}"
 	},
 		"column-rule-style": {
 		syntax: "<'border-style'>"
@@ -7610,26 +7466,11 @@
 		"border-style": {
 		syntax: "<line-style>{1,4}"
 	},
-		"container-name": {
-		syntax: "none | <custom-ident>+"
-	},
-		"flex-direction": {
-		syntax: "row | row-reverse | column | column-reverse"
-	},
-		"flex-wrap": {
-		syntax: "nowrap | wrap | wrap-reverse"
+		"font-style": {
+		syntax: "normal | italic | oblique <angle>?"
 	},
 		"font-family": {
 		syntax: "[ <family-name> | <generic-family> ]#"
-	},
-		"list-style-type": {
-		syntax: "<counter-style> | <string> | none"
-	},
-		"list-style-position": {
-		syntax: "inside | outside"
-	},
-		"list-style-image": {
-		syntax: "<image> | none"
 	},
 		"mask-border-source": {
 		syntax: "none | <image>"
@@ -7649,11 +7490,14 @@
 		"mask-border-mode": {
 		syntax: "luminance | alpha"
 	},
+		"outline-style": {
+		syntax: "auto | <'border-style'>"
+	},
 		"scroll-timeline-name": {
-		syntax: "none | <dashed-ident>#"
+		syntax: "none | <custom-ident>#"
 	},
 		"scroll-timeline-axis": {
-		syntax: "[ block | inline | x | y ]#"
+		syntax: "[ block | inline | vertical | horizontal ]#"
 	},
 		"text-decoration-line": {
 		syntax: "none | [ underline || overline || line-through || blink ] | spelling-error | grammar-error"
@@ -7663,12 +7507,6 @@
 	},
 		"text-emphasis-style": {
 		syntax: "none | [ [ filled | open ] || [ dot | circle | double-circle | triangle | sesame ] ] | <string>"
-	},
-		"view-timeline-name": {
-		syntax: "none | <dashed-ident>#"
-	},
-		"view-timeline-axis": {
-		syntax: "[ block | inline | x | y ]#"
 	}
 	};
 
@@ -7679,7 +7517,7 @@
 		syntax: "border-box | padding-box | content-box"
 	};
 	var color = {
-		syntax: "<rgb()> | <rgba()> | <hsl()> | <hsla()> | <hwb()> | <lab()> | <lch()> | <light-dark()> | <hex-color> | <named-color> | currentcolor | <deprecated-system-color>"
+		syntax: "<rgb()> | <rgba()> | <hsl()> | <hsla()> | <hwb()> | <lab()> | <lch()> | <hex-color> | <named-color> | currentcolor | <deprecated-system-color>"
 	};
 	var gradient = {
 		syntax: "<linear-gradient()> | <repeating-linear-gradient()> | <radial-gradient()> | <repeating-radial-gradient()> | <conic-gradient()> | <repeating-conic-gradient()>"
@@ -7692,9 +7530,6 @@
 	};
 	var position = {
 		syntax: "[ [ left | center | right ] || [ top | center | bottom ] | [ left | center | right | <length-percentage> ] [ top | center | bottom | <length-percentage> ]? | [ [ left | right ] <length-percentage> ] && [ [ top | bottom ] <length-percentage> ] ]"
-	};
-	var ratio = {
-		syntax: "<number [0,∞]> [ / <number [0,∞]> ]?"
 	};
 	var shadow = {
 		syntax: "inset? && <length>{2,4} && <color>?"
@@ -7784,38 +7619,11 @@
 		"contrast()": {
 		syntax: "contrast( [ <number-percentage> ] )"
 	},
-		"counter-name": {
-		syntax: "<custom-ident>"
-	},
-		"counter-style": {
-		syntax: "<counter-style-name> | symbols()"
-	},
-		"counter-style-name": {
-		syntax: "<custom-ident>"
-	},
 		"cross-fade()": {
 		syntax: "cross-fade( <cf-mixing-image> , <cf-final-image>? )"
 	},
 		"deprecated-system-color": {
 		syntax: "ActiveBorder | ActiveCaption | AppWorkspace | Background | ButtonFace | ButtonHighlight | ButtonShadow | ButtonText | CaptionText | GrayText | Highlight | HighlightText | InactiveBorder | InactiveCaption | InactiveCaptionText | InfoBackground | InfoText | Menu | MenuText | Scrollbar | ThreeDDarkShadow | ThreeDFace | ThreeDHighlight | ThreeDLightShadow | ThreeDShadow | Window | WindowFrame | WindowText"
-	},
-		"display-box": {
-		syntax: "contents | none"
-	},
-		"display-inside": {
-		syntax: "flow | flow-root | table | flex | grid | ruby"
-	},
-		"display-internal": {
-		syntax: "table-row-group | table-header-group | table-footer-group | table-row | table-cell | table-column-group | table-column | table-caption | ruby-base | ruby-text | ruby-base-container | ruby-text-container"
-	},
-		"display-legacy": {
-		syntax: "inline-block | inline-list-item | inline-table | inline-flex | inline-grid"
-	},
-		"display-listitem": {
-		syntax: "<display-outside>? && [ flow | flow-root ]? && list-item"
-	},
-		"display-outside": {
-		syntax: "block | inline | run-in"
 	},
 		"drop-shadow()": {
 		syntax: "drop-shadow( <length>{2,3} <color>? )"
@@ -7828,9 +7636,6 @@
 	},
 		"ending-shape": {
 		syntax: "circle | ellipse"
-	},
-		"explicit-track-list": {
-		syntax: "[ <line-names>? <track-size> ]+ <line-names>?"
 	},
 		"family-name": {
 		syntax: "<string> | <custom-ident>+"
@@ -7925,9 +7730,6 @@
 		"length-percentage": {
 		syntax: "<length> | <percentage>"
 	},
-		"light-dark()": {
-		syntax: "light-dark( <color>, <color> )"
-	},
 		"line-names": {
 		syntax: "'[' <custom-ident>* ']'"
 	},
@@ -7995,7 +7797,6 @@
 		"radial-gradient()": {
 		syntax: "radial-gradient( [ <ending-shape> || <size> ]? [ at <position> ]? , <color-stop-list> )"
 	},
-		ratio: ratio,
 		"relative-size": {
 		syntax: "larger | smaller"
 	},
@@ -8010,9 +7811,6 @@
 	},
 		"repeating-radial-gradient()": {
 		syntax: "repeating-radial-gradient( [ <ending-shape> || <size> ]? [ at <position> ]? , <color-stop-list> )"
-	},
-		"reversed-counter-name": {
-		syntax: "reversed( <counter-name> )"
 	},
 		"rgb()": {
 		syntax: "rgb( <percentage>{3} [ / <alpha-value> ]? ) | rgb( <number>{3} [ / <alpha-value> ]? ) | rgb( <percentage>#{3} , <alpha-value>? ) | rgb( <number>#{3} , <alpha-value>? )"
@@ -8080,9 +7878,6 @@
 		syntax: "[ left | right ] || [ top | bottom ]"
 	},
 		size: size,
-		"timeline-range-name": {
-		syntax: "cover | contain | entry | exit | entry-crossing | exit-crossing"
-	},
 		"track-breadth": {
 		syntax: "<length-percentage> | <flex> | min-content | max-content | auto"
 	},

@@ -737,10 +737,10 @@ magic-string@^0.25.7:
   dependencies:
     sourcemap-codec "^1.4.8"
 
-mdn-data-animatable@^1.1.20:
-  version "1.1.20"
-  resolved "https://registry.yarnpkg.com/mdn-data-animatable/-/mdn-data-animatable-1.1.20.tgz#390df82da7e8a7f589b10ad01177acb7df2d5124"
-  integrity sha512-IhQ6ZI3PI8aIQlJBcGur/fCl9r0xHoKr+/V3KxgbSKuVzs3Dd7NBnWvBBuA54HG906FjjjCwOKaG02Wb8dId2g==
+mdn-data-animatable@^1.1.22:
+  version "1.1.22"
+  resolved "https://registry.yarnpkg.com/mdn-data-animatable/-/mdn-data-animatable-1.1.22.tgz#df42e7f0f4a3ce8463a9722166f68ee8f4b2795d"
+  integrity sha512-lGlr6Ba/0SdbLNlEpvUwvw604mpAXn9/CyWu6ZC7YoWA4YSsasjMLIwj+7zTIgPnCANSlNFUx5Mm8Q4katce6Q==
 
 merge-stream@^2.0.0:
   version "2.0.0"
