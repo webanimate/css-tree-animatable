@@ -1,3 +1,9 @@
+## [1.0.20](https://github.com/webanimate/css-tree-animatable/compare/v1.0.19...v1.0.20) (2024-04-02)
+
+### Features
+
+- downgrade mdn-data to v2.0.31 and remove scroll-timeline ([650c7f1](https://github.com/webanimate/css-tree-animatable/commit/650c7f1d561cfb98d66bb747baf4f9e6d321e3a2))
+
 ## [1.0.19](https://github.com/webanimate/css-tree-animatable/compare/v1.0.18...v1.0.19) (2024-04-01)
 
 ### Features
